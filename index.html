@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Name — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --ink: rgba(0,0,0,.85);
+  --muted: rgba(0,0,0,.42);
+  --faint: rgba(0,0,0,.15);
+  --chip-on: #1a1a1a;
+  --chip-on-ink: #ffffff;
+  --right-w: 30%;
+  --pad: 1rem;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161616; --ink: rgba(255,255,255,.88); --muted: rgba(255,255,255,.45);
+    --faint: rgba(255,255,255,.14); --chip-on: #f2f2f2; --chip-on-ink: #161616;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161616; --ink: rgba(255,255,255,.88); --muted: rgba(255,255,255,.45);
+  --faint: rgba(255,255,255,.14); --chip-on: #f2f2f2; --chip-on-ink: #161616;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 15px/1.3 "Spline Sans Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+a:active, button:active { opacity: .7; }
+hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
+.muted { color: var(--muted); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.linkbtn { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* ---------- Layout: two columns ---------- */
+.works { width: calc(100% - var(--right-w)); padding: var(--pad); }
+.about {
+  position: fixed; top: 0; right: 0; bottom: 0; width: var(--right-w);
+  padding: calc(var(--pad) + env(safe-area-inset-top, 0px)) var(--pad) var(--pad);
+  border-left: 1px solid var(--faint); overflow-y: auto; scrollbar-width: none;
+}
+.about::-webkit-scrollbar { display: none; }
+
+/* ---------- Header row + filter ---------- */
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: .2rem 0 0; padding: 0; list-style: none; }
+.filters button {
+  font: inherit; color: var(--muted); background: none; cursor: pointer;
+  border: 1px solid var(--faint); border-radius: 99px; padding: .28em .8em;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.filters button:hover { color: var(--ink); border-color: var(--muted); }
+.filters button[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
+.filters sup { font-size: .72em; margin-left: .15em; opacity: .7; }
+
+/* ---------- Project entries ---------- */
+.project {
+  display: grid; grid-template-columns: 5fr 5fr 2fr; column-gap: 1rem;
+  padding: .8em 0; border-top: 1px solid var(--faint);
+}
+.project[hidden] { display: none; }
+.project.entering { animation: in .3s ease both; }
+@keyframes in { from { opacity: 0; } }
+.thumb { display: block; aspect-ratio: 3 / 2; width: 100%; overflow: hidden; background: var(--faint); border: 0; padding: 0; cursor: pointer; }
+.thumb img, .thumb .art { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.thumb:hover img, .thumb:hover .art { transform: scale(1.03); }
+.title { margin: 0; font: inherit; }
+.role { margin: 0 0 1.2em; }
+.desc { margin: 0 0 1.2em; max-width: 46ch; }
+.toggle .sign { display: inline-block; width: 1ch; transition: transform .25s ease; }
+.project.open .toggle .sign { transform: rotate(45deg); }
+.tags { text-align: right; font-size: 2rem; line-height: 1; color: var(--muted); }
+.tags small { display: block; font-size: 12px; margin-top: .6em; }
+.empty { padding: 3rem 0; color: var(--muted); }
+
+/* ---------- Expanded "read more" panel ---------- */
+.more {
+  grid-column: 1 / -1;
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows .4s ease;
+}
+.project.open .more { grid-template-rows: 1fr; }
+.more-inner { overflow: hidden; min-height: 0; }
+.more-body {
+  display: grid; grid-template-columns: 5fr 5fr 2fr; column-gap: 1rem;
+  padding-top: 1.6rem;
+}
+.more-text p { margin: 0 0 1.2em; max-width: 60ch; }
+.meta { margin: 0 0 1.6em; display: grid; grid-template-columns: auto 1fr; gap: .25em 1.2em; font-size: 13px; }
+.meta dt { color: var(--muted); }
+.meta dd { margin: 0; }
+.gallery {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 1rem; margin: .8rem 0 0;
+}
+.gallery.lead { grid-column: 1 / 2; grid-template-columns: 1fr; margin: 0; }
+.gallery figure { margin: 0; }
+.gallery button { display: block; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border: 0; padding: 0; background: var(--faint); cursor: zoom-in; }
+.gallery img, .gallery .art { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery figcaption { font-size: 12px; color: var(--muted); margin-top: .45em; }
+.close-row { grid-column: 1 / -1; display: flex; justify-content: space-between; padding: 1.2rem 0 .4rem; }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 50; background: var(--bg);
+  display: grid; grid-template-rows: 1fr auto; padding: calc(3rem + env(safe-area-inset-top, 0px)) 3rem calc(1.2rem + env(safe-area-inset-bottom, 0px));
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+}
+.lightbox.show { opacity: 1; pointer-events: auto; }
+.lightbox .stage { min-height: 0; display: flex; align-items: center; justify-content: center; }
+.lightbox img, .lightbox .art { max-width: 100%; max-height: 100%; width: auto; height: 100%; aspect-ratio: 4/3; object-fit: contain; }
+.lightbox img { height: auto; aspect-ratio: auto; }
+.lightbox .bar { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1rem; font-size: 13px; }
+.lightbox .nav { display: flex; gap: 1.2rem; }
+.lightbox .x { position: absolute; top: calc(1rem + env(safe-area-inset-top, 0px)); right: 1rem; }
+
+/* ---------- About panel ---------- */
+.links { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; margin: 1rem 0 2rem; }
+.bio p { margin: 0 0 1.2em; }
+.portrait { width: 100%; aspect-ratio: 4/5; margin-top: 1rem; }
+.foot { margin-top: 2rem; font-size: 12px; }
+
+/* ---------- Mobile: stack ---------- */
+@media (max-width: 800px) {
+  .about { position: static; width: 100%; border-left: 0; border-bottom: 1px solid var(--faint); padding-bottom: 1.5rem; }
+  .about .long { display: none; }
+  .works { width: 100%; }
+  .project, .more-body { grid-template-columns: 1fr; row-gap: .7rem; }
+  .gallery.lead { grid-column: 1 / -1; }
+  .tags { display: none; }
+  .row.head { flex-direction: column; align-items: flex-start; }
+  .lightbox { padding-left: 1rem; padding-right: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ============ RIGHT COLUMN: about ============ -->
+<aside class="about">
+  <div class="row"><span>YOUR NAME</span><span class="muted" id="clock">00:00:00</span></div>
+  <hr>
+  <div class="links muted">
+    <a href="mailto:you@example.com">you@example.com ↗</a>
+    <a href="https://are.na" target="_blank" rel="noopener">are.na ↗</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener">instagram ↗</a>
+  </div>
+  <div class="bio">
+    <p>Your Name is a painter, game designer, and researcher based in the United States. Write one or two sentences here about your background and what you make.</p>
+    <p class="long">Mention current affiliations, residencies, or studios here. This paragraph is hidden on phones to keep the top of the page short.</p>
+    <p class="muted long">Describe what your practice is about: the questions you keep returning to and the methods you use to explore them.</p>
+    <p class="muted long">Selected press and exhibitions can go here.</p>
+  </div>
+  <div class="portrait art" id="portrait" aria-hidden="true"></div>
+  <p class="foot muted">© <span id="year"></span> Your Name</p>
+</aside>
+
+<!-- ============ LEFT COLUMN: works ============ -->
+<main class="works">
+  <div class="row head">
+    <span>SELECTED WORK</span>
+    <ul class="filters" id="filters" aria-label="Filter projects by category"></ul>
+  </div>
+  <hr>
+  <div id="list"></div>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="linkbtn x" id="lbClose">Close ✕</button>
+  <div class="stage" id="lbStage"></div>
+  <div class="bar"><span id="lbCaption" class="muted"></span><span class="nav"><button class="linkbtn" id="lbPrev">← Prev</button><span id="lbCount" class="muted"></span><button class="linkbtn" id="lbNext">Next →</button></span></div>
+</div>
+
+<script>
+/* =========================================================
+   EDIT YOUR PROJECTS HERE
+
+   title, role, desc   → shown in the list
+   category            → one or more keys from CATEGORIES
+   image               → cover image URL ("" = generated placeholder)
+   more.details        → small facts table (any labels you like)
+   more.text           → paragraphs shown when "Read more" is opened
+   more.images         → gallery: { src: "url", caption: "..." }
+                          (src "" = placeholder). Click any image to enlarge.
+
+   Published Claude artifacts block remote images, but image URLs
+   work normally once you host this file yourself.
+   ========================================================= */
+const CATEGORIES = {
+  painting: { label: "Painting", icon: "◐" },
+  games:    { label: "Games",    icon: "◇" },
+  research: { label: "Research", icon: "⌘" },
+  film:     { label: "Film",     icon: "▷" },
+  design:   { label: "Design",   icon: "✳" }
+};
+
+const PROJECTS = [
+  { title: "SALT MARSH STUDIES", role: "Oil on linen, 2025", category: ["painting"], image: "",
+    desc: "A series of twelve paintings made over one summer on the same stretch of tidal marsh, tracking how light and water level change the same view.",
+    more: {
+      details: { Year: "2025", Medium: "Oil on linen", Size: "12 works, 40 × 50 cm each", Shown: "Harbor Gallery, Providence" },
+      text: [
+        "Every painting was started on site at the same spot, at a different point in the tide cycle. The composition stays fixed so the changes in light and water become the subject.",
+        "Replace this with the story of the work: why you made it, how you made it, and what you learned."
+      ],
+      images: [
+        { src: "", caption: "Study no. 3, high tide" },
+        { src: "", caption: "Study no. 7, dusk" },
+        { src: "", caption: "Installation view" },
+        { src: "", caption: "Working on site" }
+      ]
+    } },
+  { title: "TIDEWATER", role: "Co-director, game & film", category: ["games", "film"], image: "",
+    desc: "An interactive story about a coastal town deciding whether to retreat or rebuild as the sea rises. Players negotiate between neighbors with different stakes.",
+    more: {
+      details: { Year: "2024–2025", Role: "Co-director, narrative design", Platform: "Web, installation", Team: "4 people" },
+      text: [
+        "Players move between households in a small town, each with its own reasons to stay or leave. Every choice shifts what the town can afford to protect.",
+        "Add notes on your process, playtesting, or where the game has been shown."
+      ],
+      images: [
+        { src: "", caption: "Town map screen" },
+        { src: "", caption: "Dialogue scene" },
+        { src: "", caption: "Film still" }
+      ]
+    } },
+  { title: "SOIL LEDGER", role: "Researcher, university lab", category: ["research"], image: "",
+    desc: "A field study of how community gardens record and share soil-health data, and what gets lost when that data moves into city planning tools.",
+    more: {
+      details: { Year: "2024", Role: "Researcher", Partners: "6 community gardens" },
+      text: [
+        "Over eight months we interviewed gardeners and followed their records from notebook to spreadsheet to city database.",
+        "Summarize your findings or link to the published paper here."
+      ],
+      images: [ { src: "", caption: "Garden notebook" }, { src: "", caption: "Workshop session" } ]
+    } },
+  { title: "NIGHT SHIFT", role: "Gouache on paper, 2024", category: ["painting"], image: "",
+    desc: "Small paintings of workplaces after hours: laundromats, bakeries, parking garages. Each one made on site in under two hours.",
+    more: {
+      details: { Year: "2024", Medium: "Gouache on paper", Size: "20 works, A5" },
+      text: [ "Describe the series here." ],
+      images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ]
+    } },
+  { title: "FIELD NOTES", role: "Book design & illustration", category: ["design"], image: "",
+    desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
+    more: {
+      details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
+      text: [ "Describe the book here." ],
+      images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
+    } },
+  { title: "PATCHWORK", role: "Designer, board game", category: ["games", "design"], image: "",
+    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
+    more: {
+      details: { Year: "2023", Players: "2–5", Age: "10+" },
+      text: [ "Describe the game here." ],
+      images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
+    } },
+  { title: "LOW TIDE", role: "Director, short documentary", category: ["film", "research"], image: "",
+    desc: "A 14-minute documentary following three shellfish farmers through one season, shot entirely from their boats.",
+    more: {
+      details: { Year: "2022", Runtime: "14 min", Role: "Director, camera" },
+      text: [ "Describe the film here." ],
+      images: [ { src: "", caption: "Still, morning haul" }, { src: "", caption: "Still, harbor" } ]
+    } }
+];
+
+/* ---------- helpers ---------- */
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function placeholderArt(seed) {
+  let h = 0; for (const c of seed) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  const r = n => { h = (h * 1103515245 + 12345) >>> 0; return (h % 1000) / 1000 * n; };
+  const hue = r(360), hue2 = (hue + 40 + r(80)) % 360;
+  return `radial-gradient(circle at ${r(100)}% ${r(100)}%, hsl(${hue} 55% 62%) 0 ${18 + r(20)}%, transparent ${30 + r(20)}%),
+          radial-gradient(circle at ${r(100)}% ${r(100)}%, hsl(${hue2} 45% 45%) 0 ${10 + r(15)}%, transparent ${25 + r(15)}%),
+          linear-gradient(${r(180)}deg, hsl(${hue} 30% 88%), hsl(${hue2} 35% 72%))`;
+}
+const media = (src, seed, alt = "") => src
+  ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`
+  : `<div class="art" role="img" aria-label="${esc(alt)}" style="background:${placeholderArt(seed)}"></div>`;
+
+/* ---------- render ---------- */
+const list = document.getElementById("list");
+const filtersEl = document.getElementById("filters");
+
+list.innerHTML = PROJECTS.map((p, i) => {
+  const id = slug(p.title);
+  const m = p.more || {};
+  const imgs = m.images || [];
+  const details = Object.entries(m.details || {});
+  const galleryItem = (im, j) => `
+    <figure>
+      <button type="button" data-lb="${i}:${j}" aria-label="Enlarge ${esc(im.caption || "image")}">${media(im.src, p.title + j, im.caption)}</button>
+      ${im.caption ? `<figcaption>${esc(im.caption)}</figcaption>` : ""}
+    </figure>`;
+  return `
+  <article class="project" id="${id}" data-cats="${p.category.join(" ")}">
+    <button class="thumb" type="button" data-toggle aria-label="Open ${esc(p.title)}">${media(p.image, p.title)}</button>
+    <div>
+      <h2 class="title">${esc(p.title)}</h2>
+      <p class="role">${esc(p.role)}</p>
+      <p class="desc muted">${esc(p.desc)}</p>
+      ${p.more ? `<button class="linkbtn toggle" type="button" data-toggle aria-expanded="false" aria-controls="${id}-more"><span class="label">Read more</span> <span class="sign">+</span></button>` : ""}
+    </div>
+    <div class="tags" aria-hidden="true">
+      ${p.category.map(c => CATEGORIES[c]?.icon || "").join(" ")}
+      <small>${p.category.map(c => CATEGORIES[c]?.label || c).join(", ")}</small>
+    </div>
+    ${p.more ? `
+    <div class="more" id="${id}-more" inert>
+      <div class="more-inner">
+        <div class="more-body">
+          ${imgs.length ? `<div class="gallery lead">${galleryItem(imgs[0], 0)}</div>` : "<div></div>"}
+          <div class="more-text">
+            ${details.length ? `<dl class="meta">${details.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>` : ""}
+            ${(m.text || []).map(t => `<p>${esc(t)}</p>`).join("")}
+          </div>
+          <div></div>
+          ${imgs.length > 1 ? `<div class="gallery">${imgs.slice(1).map((im, k) => galleryItem(im, k + 1)).join("")}</div>` : ""}
+          <div class="close-row muted"><span>${imgs.length} image${imgs.length === 1 ? "" : "s"}</span><button class="linkbtn" type="button" data-toggle>Close ↑</button></div>
+        </div>
+      </div>
+    </div>` : ""}
+  </article>`;
+}).join("") + `<p class="empty" id="empty" hidden>No projects in this category yet.</p>`;
+
+/* ---------- expand / collapse ---------- */
+function setOpen(article, open, scroll) {
+  const more = article.querySelector(".more"); if (!more) return;
+  article.classList.toggle("open", open);
+  more.inert = !open;
+  const t = article.querySelector(".toggle");
+  t.setAttribute("aria-expanded", open);
+  t.querySelector(".label").textContent = open ? "Close" : "Read more";
+  if (scroll) article.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+}
+list.addEventListener("click", e => {
+  const lb = e.target.closest("[data-lb]");
+  if (lb) { const [p, j] = lb.dataset.lb.split(":").map(Number); openLightbox(p, j); return; }
+  const tg = e.target.closest("[data-toggle]"); if (!tg) return;
+  const article = tg.closest(".project");
+  const open = !article.classList.contains("open");
+  setOpen(article, open, !open);   // when closing from the bottom, jump back to the project's top
+  history.replaceState(null, "", open ? "#" + article.id : location.pathname + (currentFilter !== "all" ? "#" + currentFilter : ""));
+});
+
+/* ---------- filters ---------- */
+const count = key => key === "all" ? PROJECTS.length : PROJECTS.filter(p => p.category.includes(key)).length;
+const keys = ["all", ...Object.keys(CATEGORIES)];
+let currentFilter = "all";
+filtersEl.innerHTML = keys.map(k => `
+  <li><button type="button" data-filter="${k}" aria-pressed="false">
+    ${k === "all" ? "All" : CATEGORIES[k].label}<sup>${count(k)}</sup>
+  </button></li>`).join("");
+
+function applyFilter(key) {
+  if (!keys.includes(key)) key = "all";
+  currentFilter = key;
+  filtersEl.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.filter === key));
+  let shown = 0;
+  list.querySelectorAll(".project").forEach(el => {
+    const match = key === "all" || el.dataset.cats.split(" ").includes(key);
+    el.hidden = !match;
+    el.style.borderTopColor = "";
+    el.classList.remove("entering");
+    if (match) { void el.offsetWidth; el.classList.add("entering"); shown++; }
+  });
+  const first = list.querySelector(".project:not([hidden])");
+  if (first) first.style.borderTopColor = "transparent";
+  document.getElementById("empty").hidden = shown > 0;
+}
+filtersEl.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  history.replaceState(null, "", b.dataset.filter === "all" ? location.pathname : "#" + b.dataset.filter);
+  applyFilter(b.dataset.filter);
+});
+
+/* ---------- lightbox ---------- */
+const lb = document.getElementById("lightbox"), lbStage = document.getElementById("lbStage");
+let lbP = 0, lbI = 0, lastFocus = null;
+function drawLightbox() {
+  const p = PROJECTS[lbP], imgs = p.more.images, im = imgs[lbI];
+  lbStage.innerHTML = media(im.src, p.title + lbI, im.caption);
+  document.getElementById("lbCaption").textContent = `${p.title}${im.caption ? " — " + im.caption : ""}`;
+  document.getElementById("lbCount").textContent = `${lbI + 1} / ${imgs.length}`;
+}
+function openLightbox(p, i) { lastFocus = document.activeElement; lbP = p; lbI = i; drawLightbox(); lb.classList.add("show"); document.getElementById("lbClose").focus(); }
+function closeLightbox() { lb.classList.remove("show"); lastFocus?.focus(); }
+const step = d => { const n = PROJECTS[lbP].more.images.length; lbI = (lbI + d + n) % n; drawLightbox(); };
+document.getElementById("lbClose").onclick = closeLightbox;
+document.getElementById("lbPrev").onclick = () => step(-1);
+document.getElementById("lbNext").onclick = () => step(1);
+lbStage.addEventListener("click", closeLightbox);
+document.addEventListener("keydown", e => {
+  if (!lb.classList.contains("show")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") step(1);
+  if (e.key === "ArrowLeft") step(-1);
+});
+
+/* ---------- deep links: #painting filters, #project-name opens a project ---------- */
+const hash = decodeURIComponent(location.hash.slice(1));
+const target = hash && document.getElementById(hash);
+if (target && target.classList.contains("project")) { applyFilter("all"); setOpen(target, true, true); }
+else applyFilter(hash || "all");
+
+/* ---------- clock, year, portrait ---------- */
+const clock = document.getElementById("clock");
+const tick = () => clock.textContent = new Date().toLocaleTimeString("en-GB", { hour12: false });
+tick(); setInterval(tick, 1000);
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("portrait").style.background = placeholderArt("portrait");
+</script>
+</body>
+</html>
