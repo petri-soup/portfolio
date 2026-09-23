@@ -138,6 +138,7 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
 @media (max-width: 800px) {
   .about { position: static; width: 100%; border-left: 0; border-bottom: 1px solid var(--faint); padding-bottom: 1.5rem; }
   .about .long { display: none; }
+  .portrait { display: none; }
   .works { width: 100%; }
   .project, .more-body { grid-template-columns: 1fr; row-gap: .7rem; }
   .gallery.lead { grid-column: 1 / -1; }
@@ -155,14 +156,14 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
   <div class="row"><span>Ellen Fritz</span><span class="muted" id="clock">00:00:00</span></div>
   <hr>
   <div class="links muted">
-    <a href="mailto:you@example.com">ellen0fritz@gmail.com ↗</a>
+    <a href="mailto:ellen0fritz@gmail.com">email ↗</a>
     <a href="https://are.na" target="_blank" rel="noopener">CV ↗</a>
     <a href="https://are.na" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a href="https://instagram.com" target="_blank" rel="noopener">instagram ↗</a>
   </div>
   <div class="bio">
     <p>I’m a 3D artist, game developer, and painter using game engines to populate digital ecosystems with speculative flora and fauna. My work operates on two timescales: looking backward, virtual fossil fields preserve evolutionary history and extinct organisms; Looking forward, speculative environments rehearse near futures of climate resilience.</p>
-    <p class="long">Mention current affiliations, residencies, or studios here. This paragraph is hidden on phones to keep the top of the page short.</p>
+    <p class="long">I'm a research assistant at the DWELL Lab</p>
     
     <p class="muted long">Selected press and exhibitions can go here.</p>
   </div>
@@ -202,7 +203,7 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
    work normally once you host this file yourself.
    ========================================================= */
 const CATEGORIES = {
-  painting: { label: "Painting & Printmaking", icon: "◐" },
+  painting: { label: "Painting", icon: "◐" },
   games:    { label: "Games",    icon: "◇" },
   research: { label: "Research", icon: "⌘" },
   anim:     { label: "Animation",     icon: "▷" },
@@ -210,7 +211,7 @@ const CATEGORIES = {
 };
 
 const PROJECTS = [
-  { title: "SALT MARSH STUDIES", role: "Oil on linen, 2025", category: ["painting"], image: "",
+  { title: "Anima Animalia", role: "Oil on linen, 2025", category: ["games"], image: "",
     desc: "A series of twelve paintings made over one summer on the same stretch of tidal marsh, tracking how light and water level change the same view.",
     more: {
       details: { Year: "2025", Medium: "Oil on linen", Size: "12 works, 40 × 50 cm each", Shown: "Harbor Gallery, Providence" },
@@ -225,10 +226,10 @@ const PROJECTS = [
         { src: "", caption: "Working on site" }
       ]
     } },
-  { title: "TIDEWATER", role: "Co-director, game & film", category: ["games", "film"], image: "",
+  { title: "Tidelands 2100", role: "Art Director, 3D Artist", category: ["games", "research"], image: "",
     desc: "An interactive story about a coastal town deciding whether to retreat or rebuild as the sea rises. Players negotiate between neighbors with different stakes.",
     more: {
-      details: { Year: "2024–2025", Role: "Co-director, narrative design", Platform: "Web, installation", Team: "4 people" },
+      details: { Year: "2025–2026", Role: "Art Director, 3D Artist", Platform: "Web, installation", Team: "4 people" },
       text: [
         "Players move between households in a small town, each with its own reasons to stay or leave. Every choice shifts what the town can afford to protect.",
         "Add notes on your process, playtesting, or where the game has been shown."
@@ -239,41 +240,41 @@ const PROJECTS = [
         { src: "", caption: "Film still" }
       ]
     } },
-  { title: "SOIL LEDGER", role: "Researcher, university lab", category: ["research"], image: "",
+  { title: "ENACTS", role: "Researcher, DWELL lab", category: ["research"], image: "",
     desc: "A field study of how community gardens record and share soil-health data, and what gets lost when that data moves into city planning tools.",
     more: {
-      details: { Year: "2024", Role: "Researcher", Partners: "6 community gardens" },
+      details: { Year: "2025-26", Role: "Researcher", Partners: "6 community gardens" },
       text: [
         "Over eight months we interviewed gardeners and followed their records from notebook to spreadsheet to city database.",
         "Summarize your findings or link to the published paper here."
       ],
       images: [ { src: "", caption: "Garden notebook" }, { src: "", caption: "Workshop session" } ]
     } },
-  { title: "NIGHT SHIFT", role: "Gouache on paper, 2024", category: ["painting"], image: "",
+  { title: "Paleomythica", role: "Gouache on paper, 2024", category: ["games"], image: "",
     desc: "Small paintings of workplaces after hours: laundromats, bakeries, parking garages. Each one made on site in under two hours.",
     more: {
       details: { Year: "2024", Medium: "Gouache on paper", Size: "20 works, A5" },
       text: [ "Describe the series here." ],
       images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ]
     } },
-  { title: "FIELD NOTES", role: "Book design & illustration", category: ["design"], image: "",
+  { title: "Springs and Secret Sources", role: "Book design & illustration", category: ["painting"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
     more: {
       details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
-  { title: "PATCHWORK", role: "Designer, board game", category: ["games", "design"], image: "",
+  { title: "Genesis, Earth Diver", role: "Designer, board game", category: ["games", "anim"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
     more: {
       details: { Year: "2023", Players: "2–5", Age: "10+" },
       text: [ "Describe the game here." ],
       images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
     } },
-  { title: "LOW TIDE", role: "Director, short documentary", category: ["film", "research"], image: "",
+  { title: "Corpus Chimera", role: "Director, short documentary", category: ["painting", "research"], image: "",
     desc: "A 14-minute documentary following three shellfish farmers through one season, shot entirely from their boats.",
     more: {
-      details: { Year: "2022", Runtime: "14 min", Role: "Director, camera" },
+      details: { Year: "2023", Runtime: "14 min", Role: "Director, camera" },
       text: [ "Describe the film here." ],
       images: [ { src: "", caption: "Still, morning haul" }, { src: "", caption: "Still, harbor" } ]
     } }
