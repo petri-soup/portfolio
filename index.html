@@ -385,6 +385,16 @@ function setOpen(article, open, scroll) {
   t.querySelector(".label").textContent = open ? "Close" : "Read more";
 }
 
+  list.addEventListener("click", e => {
+  const lb = e.target.closest("[data-lb]");
+  if (lb) { const [p, j] = lb.dataset.lb.split(":").map(Number); openLightbox(p, j); return; }
+  const tg = e.target.closest("[data-toggle]"); if (!tg) return;
+  const article = tg.closest(".project");
+  const open = !article.classList.contains("open");
+  setOpen(article, open, !open);
+  history.replaceState(null, "", open ? "#" + article.id : location.pathname + (currentFilter !== "all" ? "#" + currentFilter : ""));
+});
+
 /* ---------- filters ---------- */
 const count = key => key === "all" ? PROJECTS.length : PROJECTS.filter(p => p.category.includes(key)).length;
 const keys = ["all", ...Object.keys(CATEGORIES)];
