@@ -31,7 +31,7 @@
   --bg: #161616; --ink: rgba(255,255,255,.88); --muted: rgba(255,255,255,.45);
   --faint: rgba(255,255,255,.14); --chip-on: #f2f2f2; --chip-on-ink: #161616;
 }
-html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); overflow-anchor: none; }
 *, *::before, *::after { box-sizing: inherit; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
@@ -62,7 +62,7 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
   border: 1px solid var(--faint); border-radius: 99px; padding: .28em .8em;
   transition: background .15s, color .15s, border-color .15s;
 }
-.filters button:hover { color: var(--ink); border-color: var(--muted); }
+
 .filters button[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
 .filters sup { font-size: .72em; margin-left: .15em; opacity: .7; }
 
@@ -76,7 +76,6 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
 @keyframes in { from { opacity: 0; } }
 .thumb { display: block; aspect-ratio: 3 / 2; width: 100%; overflow: hidden; background: var(--faint); border: 0; padding: 0; cursor: pointer; }
 .thumb img, .thumb .art { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
-.thumb:hover img, .thumb:hover .art { transform: scale(1.03); }
 .title { margin: 0; font: inherit; }
 .role { margin: 0 0 1.2em; }
 .desc { margin: 0 0 1.2em; max-width: 46ch; }
@@ -300,12 +299,7 @@ const PROJECTS = [
       images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
     } },
   { title: "Earthstar Polypore", role: "Designer, board game", category: ["anim", "painting"], image: "",
-    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
-    more: {
-      details: { Year: "2023", Players: "2–5", Age: "10+" },
-      text: [ "Describe the game here." ],
-      images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
-    } },
+    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters." },
   { title: "Corpus Chimera", role: "Director, short documentary", category: ["painting", "research"], image: "",
     desc: "A 14-minute documentary following three shellfish farmers through one season, shot entirely from their boats.",
     more: {
@@ -379,22 +373,17 @@ list.innerHTML = PROJECTS.map((p, i) => {
 /* ---------- expand / collapse ---------- */
 function setOpen(article, open, scroll) {
   const more = article.querySelector(".more"); if (!more) return;
+  if (!open && scroll) {
+    // if the project's title is scrolled out of view, jump back to it first
+    const top = article.getBoundingClientRect().top + window.scrollY - 8;
+    if (top < window.scrollY) window.scrollTo({ top, behavior: "instant" });
+  }
   article.classList.toggle("open", open);
   more.inert = !open;
   const t = article.querySelector(".toggle");
   t.setAttribute("aria-expanded", open);
   t.querySelector(".label").textContent = open ? "Close" : "Read more";
-  if (scroll) article.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
 }
-list.addEventListener("click", e => {
-  const lb = e.target.closest("[data-lb]");
-  if (lb) { const [p, j] = lb.dataset.lb.split(":").map(Number); openLightbox(p, j); return; }
-  const tg = e.target.closest("[data-toggle]"); if (!tg) return;
-  const article = tg.closest(".project");
-  const open = !article.classList.contains("open");
-  setOpen(article, open, !open);   // when closing from the bottom, jump back to the project's top
-  history.replaceState(null, "", open ? "#" + article.id : location.pathname + (currentFilter !== "all" ? "#" + currentFilter : ""));
-});
 
 /* ---------- filters ---------- */
 const count = key => key === "all" ? PROJECTS.length : PROJECTS.filter(p => p.category.includes(key)).length;
