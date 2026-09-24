@@ -160,7 +160,7 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
     
     <p class="muted long">Recent work has been exhibited at Art Basel Miami, the Microsoft Garage, Lima Film Festival, the New Museum, and the web publication Tractor Beam. I've held fellowships from the Maharam Foundation, Agog, NASA, and the National Science Foundation, and completed residencies at Haystack Mountain School of Craft and Fish Factory Creative Center in Iceland. </p>
   </div>
-  <img class="portrait" id="portrait" src="images/ciliatebanner2.png" alt="Ellen Fritz" style="object-fit: cover;">
+  <img class="portrait" id="portrait" src="images/ellen-headshot.png" alt="Ellen Fritz" style="object-fit: cover;">
   <p class="foot muted">© <span id="year">2026</span> Ellen Fritz</p>
 </aside> 
 
@@ -295,16 +295,13 @@ const PROJECTS = [
       images: [ { src: "images/artificialselection.jpg", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
   
-   { title: "Experiments in Physical and Virtual Hypermedia", role: "RISD Senior Thesis, Computation Technology", category: ["painting", "games", "websites"], image: "",
-    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
-    
-    },
-   { title: "Hyperkinetic", role: "Playable game prototype", category: ["games"], image: "",
+
+   { title: "Hyperkinetic", role: "Playable game prototype", category: ["games"], image: "images/hyperkinetic1.jpg",
     desc: "Small paintings of workplaces after hours: laundromats, bakeries, parking garages. Each one made on site in under two hours.",
     more: {
       details: { Year: "2026", Medium: "Gouache on paper", Size: "20 works, A5" },
       text: [ "Describe the series here." ],
-      images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ]
+      images: [ { src: "images/hyperkinetic2.jpg", caption: "Laundromat, 1 a.m." }, { src: "images/hyperkinetic3.jpg", caption: "Bakery, 4 a.m." }, { src: "images/hyperkinetic4.jpg", caption: "Bakery, 4 a.m." }, { src: "images/hyperkinetic5.jpg", caption: "Garage, level 3" } ]
     } },
    { title: "Map Series", role: "Paintings, 2024-26", category: ["painting"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
@@ -313,12 +310,15 @@ const PROJECTS = [
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
-  { title: "The Big Spawn", role: "CGI Animation", category: ["anim"], image: "",
+  { title: "The Big Spawn", role: "CGI Animation", category: ["anim"], image: "images/spawn2.jpg",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
+   links: [
+    { label: "Watch full animation", url: "https://vimeo.com/1001774532?share=copy&fl=cl&fe=ci" }
+  ],
     more: {
       details: { Year: "2023", Players: "2–5", Age: "10+" },
       text: [ "Describe the game here." ],
-      images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
+      images: [ { src: "images/spawn2.jpg", caption: "Board in play" }]
     } },
    { title: "The Edge of Unformed Space", role: "Literary game", category: ["games"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
@@ -336,6 +336,10 @@ const PROJECTS = [
       text: [ "Describe the film here." ],
       images: [ { src: "", caption: "Still, morning haul" }, { src: "", caption: "Still, harbor" } ]
     } },
+    { title: "Experiments in Physical and Virtual Hypermedia", role: "RISD Senior Thesis, Computation Technology", category: ["painting", "games", "websites"], image: "",
+    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
+    
+    },
    { title: "Navigating Hypermedia", role: "Wiki", category: ["research", "websites"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
     
