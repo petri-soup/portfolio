@@ -160,7 +160,7 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
     
     <p class="muted long">Recent work has been exhibited at Art Basel Miami, the Microsoft Garage, Lima Film Festival, the New Museum, and the web publication Tractor Beam. I've held fellowships from the Maharam Foundation, Agog, NASA, and the National Science Foundation, and completed residencies at Haystack Mountain School of Craft and Fish Factory Creative Center in Iceland. </p>
   </div>
-  <div class="portrait art" id="portrait" aria-hidden="true"></div>
+  <img class="portrait" id="portrait" src="images/ciliatebanner2.png" alt="Ellen Fritz" style="object-fit: cover;">
   <p class="foot muted">© <span id="year">2026</span> Ellen Fritz</p>
 </aside> 
 
@@ -213,10 +213,10 @@ const PROJECTS = [
         "Using photogrammetry scans of the caves and scientifically accurate paleo-ecological reconstruction, this experience attempts to create a methodology that counters the effects of Environmental Generational Amnesia as environmental memory is lost in the sixth mass extinction."
       ],
       images: [
-        { src: "images/cave2.jpg", caption: "Study no. 3, high tide" },
-        { src: "images/cave3.jpg", caption: "Study no. 7, dusk" },
+        { src: "images/cave3.jpg", caption: "Study no. 3, high tide" },
+        { src: "images/cave2.jpg", caption: "Study no. 7, dusk" },
         { src: "images/cave4.jpg", caption: "Installation view" },
-        { src: "images/cave5.jpg", caption: "Working on site" }
+        { src: "images/cave5.png", caption: "Working on site" }
       ]
     } },
   { title: "Tidelands 2100", role: "Climate Futures Game", category: ["games", "research"], image: "images/tidelands1.jpg",
@@ -238,7 +238,7 @@ const PROJECTS = [
         { src: "images/tidelands5.jpg", caption: "Film still" }
       ]
     } },
- { title: "Nature in Place: AR for Climate Resilience", role: "Research Initiative with DWELL Lab", category: ["research"], image: "",
+ { title: "Nature in Place: AR for Climate Resilience", role: "Research Initiative with DWELL Lab", category: ["research"], image: "images/enacts1.jpg",
   desc: "An NSF-funded, multi-institution research initiative using augmented reality (AR) to include community members in redesigning their own neighborhoods for adaptivity and climate resilience.",
   links: [
     { label: "Asset Samples", url: "https://petri-soup.github.io/enacts-assets/" },
@@ -250,9 +250,12 @@ const PROJECTS = [
       "Climate change is reshaping cities through flooding, extreme heat, and rising seas, and yet the residents most affected by these changes are rarely included in designing the infrastructure meant to protect them. Through AR co-creation workshops, residents learned about Nature-Based Solutions (NbS) like urban tree canopies, bioswales, rain gardens, and stormwater parks, and used digital tools to virtually re-imagine and walk through their own visions for local green spaces.",
       "As a research assistant, I 3D modeled and textured plants and infrastructure, and facilitated co-creation workshops in Rhode Island and Kentucky. Currently, the team is compiling research findings for presentation at conferences, symposiums, and journal publication. Nature in Place has been supported by the NSF and Agog Immersive Media Grant."
     ],
-    images: [ { src: "", caption: "Garden notebook" }, { src: "", caption: "Workshop session" } ]
+    images: [ { src: "images/enacts2.jpg", caption: "Garden notebook" }, 
+             { src: "images/enacts3.jpg", caption: "Garden notebook" },
+             { src: "images/enacts4.jpg", caption: "Garden notebook" },
+             { src: "images/enacts5.jpg", caption: "Workshop session" } ]
   } },
-  { title: "Paleomythica", role: "Game Environment", category: ["games"], image: "",
+  { title: "Paleomythica", role: "Game Environment", category: ["games"], image: "images/paleo1.jpg",
     desc: "A fictional ecosystem rooted in the concept of Geomythology, the study of mythologies that explain extreme weather events, fossils, and other natural phenomena. ",
      links: [
     { label: "Itch.io Webpage", url: "https://3lfritz.itch.io/paleomythica" },
@@ -261,10 +264,13 @@ const PROJECTS = [
    more: {
       details: { Year: "2025-26", Medium: "Unity, Blender, Zbrush" },
       text: [ "Creatures and plants become part of a virtual bestiary that brings dense amounts of research in paleontology, archaeology, and mythology into a superimposed landscape. From ancient mythological creatures inspired by fossil discoveries, to inaccurate reconstructions of animals in the scientific era, this project creates a multi-temporal narrative that reimagines humanity's long engagement with paleontological evidence. It is a meditation on extinction, digital revival, and loss of biodiversity in the era of the Anthropocene. Paleomythica has been exhibited at Art Basel Miami and Ivy Film Festival." ],
-      images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ] 
+      images: [ { src: "images/paleo2.jpg", caption: "Laundromat, 1 a.m." }, 
+               { src: "images/paleo3.jpg", caption: "Bakery, 4 a.m." }, 
+               { src: "images/paleo4.jpg", caption: "Bakery, 4 a.m." }, 
+               { src: "images/paleo5.jpg", caption: "Garage, level 3" } ] 
     } },
 
-  { title: "Genesis, Earth Diver", role: "CGI Animation", category: ["anim"], image: "",
+  { title: "Genesis, Earth Diver", role: "CGI Animation", category: ["anim"], image: "images/genesis1.jpg",
     desc: "A digital diorama modelled, staged, and animated in Blender that explores various theories as to how life originated on earth– both religious and scientific.",
    links: [
     { label: "Watch full animation", url: "https://vimeo.com/1080895104?share=copy&fl=cl&fe=ci" }
@@ -275,15 +281,17 @@ const PROJECTS = [
       "Mythological and paleo-creatures live together in the same collapsed ecosystem, the division between the empiricism of science and imagination of mythology dissolved. The seeking of our origins has been a human impulse throughout history, and this work is a documentation of the many ways people have answered that question and describe the architecture of the universe– from hydrothermal vents, to the world as a disk suspended in an unformed expanse of water, to the Bubble Universe Theory, which proposes that our observable world is just one of countless isolated ‘bubbles’ floating within an endlessly expanding multiverse.",
       "Genesis, Earth Diver has been exhibited at Lima Film Festival and Woods-Gerry Gallery."
     ],
-      images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ] 
+      images: [ { src: "images/genesis2.jpg", caption: "Board in play" }, 
+               { src: "images/genesis3.jpg", caption: "Board in play" },
+               { src: "images/genesis4.jpg", caption: "Tile designs" } ] 
     } },
    
-    { title: "Springs and Secret Sources", role: "Painting Dyptich", category: ["painting"], image: "",
+    { title: "Springs and Secret Sources", role: "Painting Dyptich", category: ["painting"], image: "images/springssecretsources.jpg",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
     more: {
       details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
       text: [ "Describe the book here." ],
-      images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
+      images: [ { src: "images/artificialselection.jpg", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
   
    { title: "Experiments in Physical and Virtual Hypermedia", role: "RISD Senior Thesis, Computation Technology", category: ["painting", "games", "websites"], image: "",
