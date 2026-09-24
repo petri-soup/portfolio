@@ -22,6 +22,8 @@
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+  .plinks { display: flex; flex-wrap: wrap; gap: .3em 1.2em; margin: 0 0 1.2em; }
+.plinks a { text-decoration: underline; text-underline-offset: 3px; }
 
 html { scroll-padding-top: env(safe-area-inset-top, 0px); overflow-anchor: none; }
 *, *::before, *::after { box-sizing: inherit; }
@@ -219,6 +221,10 @@ const PROJECTS = [
     } },
   { title: "Tidelands 2100", role: "Climate Futures Game", category: ["games", "research"], image: "",
     desc: "An interactive world that imagines the Rhode Island coast in the year 2100, under the effects of sea level rise, marshland migration, and government abandonment.",
+   links: [
+    { label: "Trailer", url: "https://vimeo.com/1166821492?share=copy&fl=cl&fe=ci" },
+    { label: "Website", url: "https://www.tidelands.earth/" }
+  ],
     more: {
       details: { Role: "Art Director, 3D Artist", Year: "2025–2026", Medium: "Unreal Engine, Unity, Blender, Zbrush, Substance Painter/Designer", Collaborators: "Annie Chen and Zoe Lee of BEAM Studio, Ian Haut, Healey Koch" },
       text: [
@@ -231,22 +237,30 @@ const PROJECTS = [
         { src: "", caption: "Film still" }
       ]
     } },
-  { title: "Nature in Place: Augmented Reality for Climate Resilience", role: "Research Initiative with DWELL Lab", category: ["research"], image: "",
-    desc: "An NSF-funded, multi-institution research initiative using augmented reality (AR) to include community members in redesigning their own neighborhoods for adaptivity and climate resilience.",
-    more: {
-      details: {  Role: "Research Assistant, AR Developer, 3D Modeler", Year: "2025-26", Collaborators: "Madison Jones, Johanna Barthmaier-Payne, Tanmayee More" },
-      text: [
-        "Climate change is reshaping cities through flooding, extreme heat, and rising seas, and yet the residents most affected by these changes are rarely included in designing the infrastructure meant to protect them. Through AR co-creation workshops, residents learned about Nature-Based Solutions (NbS) like urban tree canopies, bioswales, rain gardens, and stormwater parks, and used digital tools to virtually re-imagine and walk through their own visions for local green spaces.",
-        "As a research assistant, I 3D modeled and textured plants and infrastructure, and facilitated co-creation workshops in Rhode Island and Kentucky. Currently, the team is compiling research findings for presentation at conferences, symposiums, and journal publication. Nature in Place has been supported by the NSF and Agog Immersive Media Grant. "
-      ],  
-      images: [ { src: "", caption: "Garden notebook" }, { src: "", caption: "Workshop session" } ]
-    } },
+ { title: "Nature in Place: AR for Climate Resilience", role: "Research Initiative with DWELL Lab", category: ["research"], image: "",
+  desc: "An NSF-funded, multi-institution research initiative using augmented reality (AR) to include community members in redesigning their own neighborhoods for adaptivity and climate resilience.",
+  links: [
+    { label: "Asset Archive", url: "https://petri-soup.github.io/enacts-assets/" },
+    { label: "EPSCoR Post", url: "https://www.nhepscor.org/projects/enacts" }
+  ],
+  more: {
+    details: { Role: "Research Assistant, AR Developer, 3D Modeler", Year: "2025–26", Collaborators: "Madison Jones, Johanna Barthmaier-Payne, Tanmayee More" },
+    text: [
+      "Climate change is reshaping cities through flooding, extreme heat, and rising seas, and yet the residents most affected by these changes are rarely included in designing the infrastructure meant to protect them. Through AR co-creation workshops, residents learned about Nature-Based Solutions (NbS) like urban tree canopies, bioswales, rain gardens, and stormwater parks, and used digital tools to virtually re-imagine and walk through their own visions for local green spaces.",
+      "As a research assistant, I 3D modeled and textured plants and infrastructure, and facilitated co-creation workshops in Rhode Island and Kentucky. Currently, the team is compiling research findings for presentation at conferences, symposiums, and journal publication. Nature in Place has been supported by the NSF and Agog Immersive Media Grant."
+    ],
+    images: [ { src: "", caption: "Garden notebook" }, { src: "", caption: "Workshop session" } ]
+  } },
   { title: "Paleomythica", role: "Game Environment", category: ["games"], image: "",
-    desc: "Small paintings of workplaces after hours: laundromats, bakeries, parking garages. Each one made on site in under two hours.",
-    more: {
-      details: { Year: "2024", Medium: "Gouache on paper", Size: "20 works, A5" },
-      text: [ "Describe the series here." ],
-      images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ]
+    desc: "A fictional ecosystem rooted in the concept of Geomythology, the study of mythologies that explain extreme weather events, fossils, and other natural phenomena. ",
+     links: [
+    { label: "Itch.io Webpage", url: "https://3lfritz.itch.io/paleomythica" },
+    { label: "Asset Archive", url: "https://petri-soup.github.io/paleomythica-bestiary/" }
+  ],
+   more: {
+      details: { Year: "2025-26", Medium: "Unity, Blender, Zbrush", Link: "20 works, A5" },
+      text: [ "Creatures and plants become part of a digital diorama, a virtual bestiary that brings dense amounts of research in paleontology, archaeology, and mythology into a superimposed landscape. From ancient mythological creatures inspired by fossil discoveries, to inaccurate reconstructions of animals in the scientific era, this project creates a multi-temporal narrative that reimagines humanity's long engagement with paleontological evidence. It is a meditation on extinction, digital revival, and loss of biodiversity in the era of the Anthropocene. Paleomythica has been exhibited at Art Basel Miami and Ivy Film Festival." ],
+      images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ] 
     } },
   { title: "Springs and Secret Sources", role: "Painting Dyptich", category: ["painting"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
@@ -347,6 +361,7 @@ list.innerHTML = PROJECTS.map((p, i) => {
       <h2 class="title">${esc(p.title)}</h2>
       <p class="role">${esc(p.role)}</p>
       <p class="desc muted">${esc(p.desc)}</p>
+            ${(p.links || []).length ? `<p class="plinks">${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</p>` : ""}
       ${p.more ? `<button class="linkbtn toggle" type="button" data-toggle aria-expanded="false" aria-controls="${id}-more"><span class="label">Read more</span> <span class="sign">+</span></button>` : ""}
     </div>
     <div class="tags" aria-hidden="true">
