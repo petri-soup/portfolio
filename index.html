@@ -9,28 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #ffffff;
-  --ink: rgba(0,0,0,.85);
-  --muted: rgba(0,0,0,.42);
-  --faint: rgba(0,0,0,.15);
-  --chip-on: #1a1a1a;
-  --chip-on-ink: #ffffff;
+  color-scheme: dark;
+  --bg: #1c2619;
+  --ink: #cfed9f;
+--muted: #7e9174;
+  --faint: #f7c45e;
+  --chip-on: #f2f2f2;
+  --chip-on-ink: #161616;
   --right-w: 30%;
   --pad: 1rem;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #161616; --ink: rgba(255,255,255,.88); --muted: rgba(255,255,255,.45);
-    --faint: rgba(255,255,255,.14); --chip-on: #f2f2f2; --chip-on-ink: #161616;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #161616; --ink: rgba(255,255,255,.88); --muted: rgba(255,255,255,.45);
-  --faint: rgba(255,255,255,.14); --chip-on: #f2f2f2; --chip-on-ink: #161616;
-}
+
 html { scroll-padding-top: env(safe-area-inset-top, 0px); overflow-anchor: none; }
 *, *::before, *::after { box-sizing: inherit; }
 body {
@@ -210,7 +202,7 @@ const CATEGORIES = {
 };
  
 const PROJECTS = [
-  { title: "Anima Animalia", role: "Game and immersive installation", category: ["games", "research"], image: "",
+  { title: "Anima Hominis", role: "Game and immersive installation", category: ["games", "research"], image: "",
     desc: "A series of twelve paintings made over one summer on the same stretch of tidal marsh, tracking how light and water level change the same view.",
     more: {
       details: { Year: "2026", Medium: "Oil on linen", Size: "12 works, 40 × 50 cm each", Shown: "Harbor Gallery, Providence" },
@@ -225,7 +217,7 @@ const PROJECTS = [
         { src: "", caption: "Working on site" }
       ]
     } },
-  { title: "Tidelands 2100", role: "Art Director, 3D Artist", category: ["games", "research"], image: "",
+  { title: "Tidelands 2100", role: "Climate Futures Game", category: ["games", "research"], image: "",
     desc: "An interactive story about a coastal town deciding whether to retreat or rebuild as the sea rises. Players negotiate between neighbors with different stakes.",
     more: {
       details: { Year: "2025–2026", Role: "Art Director, 3D Artist", Platform: "Web, installation", Team: "4 people" },
@@ -269,6 +261,13 @@ const PROJECTS = [
       details: { Year: "2023", Players: "2–5", Age: "10+" },
       text: [ "Describe the game here." ],
       images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
+    } },
+    { title: "Hyperkinetic", role: "Playable game prototype", category: ["games"], image: "",
+    desc: "Small paintings of workplaces after hours: laundromats, bakeries, parking garages. Each one made on site in under two hours.",
+    more: {
+      details: { Year: "2026", Medium: "Gouache on paper", Size: "20 works, A5" },
+      text: [ "Describe the series here." ],
+      images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ]
     } },
    { title: "The Edge of Unformed Space", role: "Literary game", category: ["games"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
