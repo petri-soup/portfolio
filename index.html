@@ -240,8 +240,8 @@ const PROJECTS = [
  { title: "Nature in Place: AR for Climate Resilience", role: "Research Initiative with DWELL Lab", category: ["research"], image: "",
   desc: "An NSF-funded, multi-institution research initiative using augmented reality (AR) to include community members in redesigning their own neighborhoods for adaptivity and climate resilience.",
   links: [
-    { label: "Asset Archive", url: "https://petri-soup.github.io/enacts-assets/" },
-    { label: "EPSCoR Post", url: "https://www.nhepscor.org/projects/enacts" }
+    { label: "Asset Samples", url: "https://petri-soup.github.io/enacts-assets/" },
+    { label: "EPSCoR Announcement", url: "https://www.nhepscor.org/projects/enacts" }
   ],
   more: {
     details: { Role: "Research Assistant, AR Developer, 3D Modeler", Year: "2025–26", Collaborators: "Madison Jones, Johanna Barthmaier-Payne, Tanmayee More" },
@@ -255,26 +255,26 @@ const PROJECTS = [
     desc: "A fictional ecosystem rooted in the concept of Geomythology, the study of mythologies that explain extreme weather events, fossils, and other natural phenomena. ",
      links: [
     { label: "Itch.io Webpage", url: "https://3lfritz.itch.io/paleomythica" },
-    { label: "Asset Archive", url: "https://petri-soup.github.io/paleomythica-bestiary/" }
+    { label: "Asset Samples", url: "https://petri-soup.github.io/paleomythica-bestiary/" }
   ],
    more: {
-      details: { Year: "2025-26", Medium: "Unity, Blender, Zbrush", Link: "20 works, A5" },
-      text: [ "Creatures and plants become part of a digital diorama, a virtual bestiary that brings dense amounts of research in paleontology, archaeology, and mythology into a superimposed landscape. From ancient mythological creatures inspired by fossil discoveries, to inaccurate reconstructions of animals in the scientific era, this project creates a multi-temporal narrative that reimagines humanity's long engagement with paleontological evidence. It is a meditation on extinction, digital revival, and loss of biodiversity in the era of the Anthropocene. Paleomythica has been exhibited at Art Basel Miami and Ivy Film Festival." ],
+      details: { Year: "2025-26", Medium: "Unity, Blender, Zbrush" },
+      text: [ "Creatures and plants become part of a virtual bestiary that brings dense amounts of research in paleontology, archaeology, and mythology into a superimposed landscape. From ancient mythological creatures inspired by fossil discoveries, to inaccurate reconstructions of animals in the scientific era, this project creates a multi-temporal narrative that reimagines humanity's long engagement with paleontological evidence. It is a meditation on extinction, digital revival, and loss of biodiversity in the era of the Anthropocene. Paleomythica has been exhibited at Art Basel Miami and Ivy Film Festival." ],
       images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ] 
     } },
-  { title: "Springs and Secret Sources", role: "Painting Dyptich", category: ["painting"], image: "",
-    desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
-    more: {
-      details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
-      text: [ "Describe the book here." ],
-      images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
-    } },
+
   { title: "Genesis, Earth Diver", role: "CGI Animation", category: ["anim"], image: "",
-    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
-    more: {
-      details: { Year: "2023", Players: "2–5", Age: "10+" },
-      text: [ "Describe the game here." ],
-      images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
+    desc: "A digital diorama modelled, staged, and animated in Blender that explores various theories as to how life originated on earth– both religious and scientific.",
+   links: [
+    { label: "Watch full animation", url: "https://vimeo.com/1080895104?share=copy&fl=cl&fe=ci" }
+  ],
+   more: {
+      details: { Year: "2024", Medium: "Blender, Zbrush", Length: "2m53s" },
+      text: [
+      "Mythological and paleo-creatures live together in the same collapsed ecosystem, the division between the empiricism of science and imagination of mythology dissolved. The seeking of our origins has been a human impulse throughout history, and this work is a documentation of the many ways people have answered that question and describe the architecture of the universe– from hydrothermal vents, to the world as a disk suspended in an unformed expanse of water, to the Bubble Universe Theory, which proposes that our observable world is just one of countless isolated ‘bubbles’ floating within an endlessly expanding multiverse.",
+      "Genesis, Earth Diver has been exhibited at Lima Film Festival and Woods-Gerry Gallery."
+    ],
+      images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ] 
     } },
     { title: "Hyperkinetic", role: "Playable game prototype", category: ["games"], image: "",
     desc: "Small paintings of workplaces after hours: laundromats, bakeries, parking garages. Each one made on site in under two hours.",
@@ -283,13 +283,14 @@ const PROJECTS = [
       text: [ "Describe the series here." ],
       images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ]
     } },
-   { title: "The Edge of Unformed Space", role: "Literary game", category: ["games"], image: "",
+    { title: "Springs and Secret Sources", role: "Painting Dyptich", category: ["painting"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
     more: {
       details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
+  
    { title: "Experiments in Physical and Virtual Hypermedia", role: "RISD Senior Thesis, Computation Technology", category: ["painting", "games", "websites"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
     
@@ -307,6 +308,13 @@ const PROJECTS = [
       details: { Year: "2023", Players: "2–5", Age: "10+" },
       text: [ "Describe the game here." ],
       images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
+    } },
+   { title: "The Edge of Unformed Space", role: "Literary game", category: ["games"], image: "",
+    desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
+    more: {
+      details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
+      text: [ "Describe the book here." ],
+      images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
   { title: "Earthstar Polypore", role: "Stop-motion Animation", category: ["anim", "painting"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters." },
