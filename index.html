@@ -173,7 +173,7 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
 <!-- ============ LEFT COLUMN: works ============ -->
 <main class="works">
   <div class="row head">
-    <span>SELECTED WORK</span>
+    <span>SELECTED WORK 𖡼.𖤣𖥧𖡼.𖤣𖥧</span>
     <ul class="filters" id="filters" aria-label="Filter projects by category"></ul>
   </div>
   <hr>
@@ -202,11 +202,11 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
    work normally once you host this file yourself.
    ========================================================= */
 const CATEGORIES = {
-  games:    { label: "Games",    icon: "✳" },
-   painting: { label: "Painting", icon: "◐" },
-  research: { label: "Research", icon: "⌘" },
+  games:    { label: "Games",    icon: "ꕥ" },
+   painting: { label: "Painting", icon: "಄" },
+  research: { label: "Research", icon: "✽" },
   anim:     { label: "Animation",     icon: "▷" },
-  websites:   { label: "Websites",   icon: "✳" }
+  websites:   { label: "Websites",   icon: "𖤣𖥧" }
 };
  
 const PROJECTS = [
@@ -263,7 +263,7 @@ const PROJECTS = [
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
-  { title: "Genesis, Earth Diver", role: "CGI Animation", category: ["games", "anim"], image: "",
+  { title: "Genesis, Earth Diver", role: "CGI Animation", category: ["anim"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
     more: {
       details: { Year: "2023", Players: "2–5", Age: "10+" },
@@ -277,7 +277,7 @@ const PROJECTS = [
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
-   { title: "Experiments in Physical and Virtual Hypermedia", role: "RISD Senior Thesis, Computation Technology", category: ["research", "painting", "games", "websites"], image: "",
+   { title: "Experiments in Physical and Virtual Hypermedia", role: "RISD Senior Thesis, Computation Technology", category: ["painting", "games", "websites"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
     
     },
@@ -297,7 +297,7 @@ const PROJECTS = [
     } },
   { title: "Earthstar Polypore", role: "Stop-motion Animation", category: ["anim", "painting"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters." },
-  { title: "Corpus Chimera", role: "Print Series", category: ["painting", "research"], image: "",
+  { title: "Corpus Chimera", role: "Print Series", category: ["painting"], image: "",
     desc: "A 14-minute documentary following three shellfish farmers through one season, shot entirely from their boats.",
     more: {
       details: { Year: "2023", Runtime: "14 min", Role: "Director, camera" },
