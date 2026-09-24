@@ -156,19 +156,19 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
   <hr>
   <div class="links muted">
     <a href="mailto:ellen0fritz@gmail.com">email ↗</a>
-    <a href="https://are.na" target="_blank" rel="noopener">CV ↗</a>
-    <a href="https://are.na" target="_blank" rel="noopener">LinkedIn ↗</a>
-    <a href="https://instagram.com" target="_blank" rel="noopener">instagram ↗</a>
+    <a href="https://petri-soup.github.io/ellens-cv/" target="_blank" rel="noopener">CV ↗</a>
+    <a href="https://www.linkedin.com/in/3llenfritz" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://www.instagram.com/geckoe" target="_blank" rel="noopener">instagram ↗</a>
   </div>
   <div class="bio">
     <p>I’m a 3D artist, game developer, and painter using game engines to populate digital ecosystems with speculative flora and fauna. My work operates on two timescales: looking backward, virtual fossil fields preserve evolutionary history and extinct organisms; Looking forward, speculative environments rehearse near futures of climate resilience.</p>
     <p class="long">I'm a research assistant at the DWELL Lab</p>
     
-    <p class="muted long">Selected press and exhibitions can go here.</p>
+    <p class="muted long">Recent work has been exhibited at Art Basel Miami, the Microsoft Garage, Lima Film Festival, the New Museum, and the web publication Tractor Beam. She has held fellowships from the Maharam Foundation, Agog, NASA, and the National Science Foundation, and completed residencies at Haystack Mountain School of Craft and Fish Factory Creative Center in Iceland. </p>
   </div>
   <div class="portrait art" id="portrait" aria-hidden="true"></div>
-  <p class="foot muted">© <span id="year"></span> Ellen Fritz</p>
-</aside>
+  <p class="foot muted">© <span id="year">2026</span> Ellen Fritz</p>
+</aside> 
 
 <!-- ============ LEFT COLUMN: works ============ -->
 <main class="works">
@@ -202,18 +202,18 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
    work normally once you host this file yourself.
    ========================================================= */
 const CATEGORIES = {
-  painting: { label: "Painting", icon: "◐" },
   games:    { label: "Games",    icon: "✳" },
+   painting: { label: "Painting", icon: "◐" },
   research: { label: "Research", icon: "⌘" },
   anim:     { label: "Animation",     icon: "▷" },
   websites:   { label: "Websites",   icon: "✳" }
 };
-
+ 
 const PROJECTS = [
-  { title: "Anima Animalia", role: "Oil on linen, 2025", category: ["games", "research"], image: "",
+  { title: "Anima Animalia", role: "Game and immersive installation", category: ["games", "research"], image: "",
     desc: "A series of twelve paintings made over one summer on the same stretch of tidal marsh, tracking how light and water level change the same view.",
     more: {
-      details: { Year: "2025", Medium: "Oil on linen", Size: "12 works, 40 × 50 cm each", Shown: "Harbor Gallery, Providence" },
+      details: { Year: "2026", Medium: "Oil on linen", Size: "12 works, 40 × 50 cm each", Shown: "Harbor Gallery, Providence" },
       text: [
         "Every painting was started on site at the same spot, at a different point in the tide cycle. The composition stays fixed so the changes in light and water become the subject.",
         "Replace this with the story of the work: why you made it, how you made it, and what you learned."
@@ -239,7 +239,7 @@ const PROJECTS = [
         { src: "", caption: "Film still" }
       ]
     } },
-  { title: "ENACTS", role: "Researcher, DWELL lab", category: ["research"], image: "",
+  { title: "Nature in Place: Augmented Reality for Climate Resilience", role: "Research Initiative with DWELL Lab", category: ["research"], image: "",
     desc: "A field study of how community gardens record and share soil-health data, and what gets lost when that data moves into city planning tools.",
     more: {
       details: { Year: "2025-26", Role: "Researcher", Partners: "6 community gardens" },
@@ -249,64 +249,69 @@ const PROJECTS = [
       ],
       images: [ { src: "", caption: "Garden notebook" }, { src: "", caption: "Workshop session" } ]
     } },
-  { title: "Paleomythica", role: "Gouache on paper, 2024", category: ["games"], image: "",
+  { title: "Paleomythica", role: "Game Environment, 2025", category: ["games"], image: "",
     desc: "Small paintings of workplaces after hours: laundromats, bakeries, parking garages. Each one made on site in under two hours.",
     more: {
       details: { Year: "2024", Medium: "Gouache on paper", Size: "20 works, A5" },
       text: [ "Describe the series here." ],
       images: [ { src: "", caption: "Laundromat, 1 a.m." }, { src: "", caption: "Bakery, 4 a.m." }, { src: "", caption: "Garage, level 3" } ]
     } },
-  { title: "Springs and Secret Sources", role: "Book design & illustration", category: ["painting"], image: "",
+  { title: "Springs and Secret Sources", role: "Painting Dyptich", category: ["painting"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
     more: {
       details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
-  { title: "Genesis, Earth Diver", role: "Designer, board game", category: ["games", "anim"], image: "",
+  { title: "Genesis, Earth Diver", role: "CGI Animation", category: ["games", "anim"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
     more: {
       details: { Year: "2023", Players: "2–5", Age: "10+" },
       text: [ "Describe the game here." ],
       images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
     } },
-   { title: "The Edge of Unformed Space", role: "Book design & illustration", category: ["games"], image: "",
+   { title: "The Edge of Unformed Space", role: "Literary game", category: ["games"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
     more: {
       details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
-   { title: "Experiments in Physical and Virtual Hypermedia", role: "Designer, board game", category: ["research", "painting", "games"], image: "",
+   { title: "Experiments in Physical and Virtual Hypermedia", role: "RISD Senior Thesis, Computation Technology", category: ["research", "painting", "games", "websites"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
-    more: {
-      details: { Year: "2025", Players: "2–5", Age: "10+" },
-      text: [ "Describe the game here." ],
-      images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
+    
     } },
-   { title: "Map Series", role: "Book design & illustration", category: ["painting"], image: "",
+   { title: "Map Series", role: "Paintings, 2024-26", category: ["painting"], image: "",
     desc: "A 160-page illustrated field guide to plants in urban vacant lots, designed to be carried and written in.",
     more: {
       details: { Year: "2023", Format: "160 pages, softcover", Role: "Design & illustration" },
       text: [ "Describe the book here." ],
       images: [ { src: "", caption: "Cover" }, { src: "", caption: "Spread" } ]
     } },
-  { title: "The Big Spawn", role: "Designer, board game", category: ["anim"], image: "",
+  { title: "The Big Spawn", role: "CGI Animation", category: ["anim"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
     more: {
       details: { Year: "2023", Players: "2–5", Age: "10+" },
       text: [ "Describe the game here." ],
       images: [ { src: "", caption: "Board in play" }, { src: "", caption: "Tile designs" } ]
     } },
-  { title: "Earthstar Polypore", role: "Designer, board game", category: ["anim", "painting"], image: "",
+  { title: "Earthstar Polypore", role: "Stop-motion Animation", category: ["anim", "painting"], image: "",
     desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters." },
-  { title: "Corpus Chimera", role: "Director, short documentary", category: ["painting", "research"], image: "",
+  { title: "Corpus Chimera", role: "Print Series", category: ["painting", "research"], image: "",
     desc: "A 14-minute documentary following three shellfish farmers through one season, shot entirely from their boats.",
     more: {
       details: { Year: "2023", Runtime: "14 min", Role: "Director, camera" },
       text: [ "Describe the film here." ],
       images: [ { src: "", caption: "Still, morning haul" }, { src: "", caption: "Still, harbor" } ]
-    } }
+    } },
+   { title: "Navigating Hypermedia", role: "Wiki", category: ["research", "websites"], image: "",
+    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
+    
+    } },
+   { title: "Hydrothermal Vent Mining Artcle", role: "Author", category: ["research", "websites"], image: "",
+    desc: "A cooperative board game where players restore a watershed tile by tile. Tested with middle school classrooms over two semesters.",
+    
+    } },
 ];
 
 /* ---------- helpers ---------- */
