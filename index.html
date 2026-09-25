@@ -158,9 +158,9 @@ hr { border: 0; height: 1px; background: var(--faint); margin: .8em 0; }
   </div>
   <div class="bio">
     <p>I’m a 3D artist, game developer, and painter using game engines to populate digital ecosystems with speculative flora and fauna. My work operates on two timescales: looking backward, virtual fossil fields preserve evolutionary history and extinct organisms; Looking forward, speculative environments rehearse near futures of climate resilience.</p>
-    <p class="long">I recieved my BFA from Rhode Island School of Design in 2025, and I'm a research assistant at the DWELL Lab at URI. </p>
+    <p class="long">I received my BFA from Rhode Island School of Design in 2025, and I'm a research assistant at the DWELL Lab at URI. </p>
     
-    <p class="muted long">Recent work has been exhibited at Art Basel Miami, the Microsoft Garage, Lima Film Festival, and the web publication Tractor Beam. I've held fellowships from the the National Science Foundation, NASA, Agog, and the Maharam Foundation, and completed residencies at Haystack Mountain School of Craft and Fish Factory Creative Center in Iceland. </p>
+    <p class="muted long">Recent work has been exhibited at Art Basel Miami, the Microsoft Garage, Lima Film Festival, and the web publication Tractor Beam. I've held fellowships from the National Science Foundation, NASA, Agog, and the Maharam Foundation, and completed residencies at Haystack Mountain School of Craft and Fish Factory Creative Center in Iceland. </p>
   </div>
   <img class="portrait" id="portrait" src="images/ellen-headshot.png" alt="Ellen Fritz" style="object-fit: cover;">
   <p class="foot muted">© <span id="year">2026</span> Ellen Fritz</p>
@@ -247,7 +247,7 @@ const PROJECTS = [
     { label: "EPSCoR Announcement", url: "https://www.nhepscor.org/projects/enacts" }
   ],
   more: {
-    details: { Year: "2025–26", Role: "Research Assistant, AR Developer, 3D Modeler", Supported By: "NSF, Agog Immersive Media Grant", Collaborators: "Madison Jones, Johanna Barthmaier-Payne, Tanmayee More" },
+details: { Year: "2025–26", Role: "Research Assistant, AR Developer, 3D Modeler", "Supported By": "NSF, Agog Immersive Media Grant", Collaborators: "Madison Jones, Johanna Barthmaier-Payne, Tanmayee More" },
     text: [
       "Climate change is reshaping cities through flooding, extreme heat, and rising seas, and yet the residents most affected by these changes are rarely included in designing the infrastructure meant to protect them. Through co-creation workshops, residents learned about Nature-Based Solutions (NbS) like tree canopies, bioswales, rain gardens, and stormwater parks, and used AR to virtually re-imagine and walk through their visions for local green spaces. ",
       "As a research assistant, I modeled and textured 3D assets and facilitated co-creation workshops in Rhode Island and Kentucky. Currently, the team is compiling research findings for conferences, symposiums, and journal publication. "
@@ -265,7 +265,7 @@ const PROJECTS = [
   ],
    more: {
       details: { Year: "2025-26", Medium: "Unity, Blender, Zbrush", Exhibited: "Art Basel Miami and Ivy Film Festival" },
-      text: [ "Players traverse an environment where creatures and plants form distant places and times form a virtual bestiary that brings dense research in paleontology, archaeology, and mythology into a superimposed landscape. From ancient mythological creatures inspired by fossil discoveries, to inaccurate reconstructions of animals in the scientific era, this project creates a multi-temporal narrative that reimagines humanity's long engagement with paleontological evidence. It is a meditation on extinction, digital revival, and loss of biodiversity in the era of the Anthropocene." ],
+      text: [ "Players traverse an environment where creatures and plants from distant places and times form a virtual bestiary that brings dense research in paleontology, archaeology, and mythology into a superimposed landscape. From ancient mythological creatures inspired by fossil discoveries, to inaccurate reconstructions of animals in the scientific era, this project creates a multi-temporal narrative that reimagines humanity's long engagement with paleontological evidence. It is a meditation on extinction, digital revival, and loss of biodiversity in the era of the Anthropocene." ],
       images: [ { src: "images/paleo2.jpg", caption: "still, chalicotherium and saguaro" }, 
                { src: "images/paleo3.jpg", caption: "still, giant lily" }, 
                { src: "images/paleo4.jpg", caption: "still, from the pond" }, 
@@ -286,7 +286,7 @@ const PROJECTS = [
       images: [ { src: "images/thesis2.jpg", caption: "Old Islandia, oil on muslin, 52x38in" }, 
                { src: "images/thesis1.jpg", caption: "Particles Under Observation, oil on canvas, 68x68in" },
                { src: "images/thesis4.jpg", caption: "Worldome, oil on canvas, 27x66in" },
-                { src: "images/thesis5.jpg", caption: "Verical Perspective, oil on muslin, 36x56in" },
+                { src: "images/thesis5.jpg", caption: "Vertical Perspective, oil on muslin, 36x56in" },
               { src: "images/thesis6.jpg", caption: "game in Unity" }] 
     } },
 
@@ -511,7 +511,6 @@ const clock = document.getElementById("clock");
 const tick = () => clock.textContent = new Date().toLocaleTimeString("en-GB", { hour12: false });
 tick(); setInterval(tick, 1000);
 document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("portrait").style.background = placeholderArt("portrait");
 </script>
 </body>
 </html>
